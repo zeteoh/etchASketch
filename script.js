@@ -51,15 +51,15 @@ let eraserListener = (event) => {
 };
 
 function eraser(){
-    console.log(toggle)
     if(!toggle){
+        getEraser.style.cssText = "box-shadow: 5px 5px 5px black"
         toggle = true
-        console.log(toggle)
         blocks.forEach((block) => {
             block.addEventListener("mouseover", eraserListener)
         })
     }else{
         toggle = false
+        getEraser.style.cssText = "box-shadow: 0 0 0 white"
         console.log("hi")
         blocks.forEach((block) => {
             block.removeEventListener("mouseover", eraserListener)
