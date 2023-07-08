@@ -54,22 +54,18 @@ function eraser(){
     console.log(toggle)
     if(!toggle){
         toggle = true
-        getEraser.addEventListener('click', ()=> {
-            blocks.forEach((block) => {
-                block.addEventListener("mouseover", eraserListener)
-            })
+        console.log(toggle)
+        blocks.forEach((block) => {
+            block.addEventListener("mouseover", eraserListener)
         })
     }else{
         toggle = false
         console.log("hi")
-        getEraser.addEventListener('click', ()=> {
-            blocks.forEach((block) => {
-                block.removeEventListener("mouseover", eraserListener)
-            })
+        blocks.forEach((block) => {
+            block.removeEventListener("mouseover", eraserListener)
         })
     }
 }
 
 sketch()
 clear()
-eraser()
