@@ -38,17 +38,18 @@ function sketch(){
     })
 }
 
-function clear(){
-    blocks.forEach((block) => {
-        getClear.addEventListener("click", () => {
-            block.style.backgroundColor = "white";
-        })
-    })
-}
-
 let eraserListener = (event) => {
     event.target.style.backgroundColor = "white";
 };
+
+
+function removeEraserListener(){
+    toggle = false
+    getEraser.style.cssText = "box-shadow: 0 0 0 white"
+    blocks.forEach((block) => {
+        block.removeEventListener("mouseover", eraserListener)
+    })
+}
 
 function eraser(){
     if(!toggle){
@@ -58,13 +59,20 @@ function eraser(){
             block.addEventListener("mouseover", eraserListener)
         })
     }else{
-        toggle = false
-        getEraser.style.cssText = "box-shadow: 0 0 0 white"
-        console.log("hi")
-        blocks.forEach((block) => {
-            block.removeEventListener("mouseover", eraserListener)
-        })
+        removeEraserListener()
     }
+}
+
+function clear(){
+    blocks.forEach((block) => {
+        getClear.addEventListener("click", () => {
+            block.style.backgroundColor = "white";
+            if(toggle){
+                console.log()
+                removeEraserListener()
+            }
+        })
+    })
 }
 
 sketch()
