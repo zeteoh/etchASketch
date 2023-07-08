@@ -25,12 +25,16 @@ makeRows(8);
 
 const blocks = document.querySelectorAll('.block');
 const getClear = document.querySelector('.clear');
+const getEraser = document.querySelector('.eraser');
+let toggle = false;
+
+let sketchListener = (event) => {
+    event.target.style.backgroundColor = "black"
+}
 
 function sketch(){
     blocks.forEach((block) => {
-        block.addEventListener("mouseover", () => {
-            block.style.backgroundColor = "black";
-        })
+        block.addEventListener("mouseover", sketchListener)
     })
 }
 
@@ -42,9 +46,30 @@ function clear(){
     })
 }
 
+let eraserListener = (event) => {
+    event.target.style.backgroundColor = "white";
+};
+
+function eraser(){
+    console.log(toggle)
+    if(!toggle){
+        toggle = true
+        getEraser.addEventListener('click', ()=> {
+            blocks.forEach((block) => {
+                block.addEventListener("mouseover", eraserListener)
+            })
+        })
+    }else{
+        toggle = false
+        console.log("hi")
+        getEraser.addEventListener('click', ()=> {
+            blocks.forEach((block) => {
+                block.removeEventListener("mouseover", eraserListener)
+            })
+        })
+    }
+}
+
 sketch()
 clear()
-
-function blockEdit(block, colour){
-    block.style.backgroundColor = colour
-}
+eraser()
