@@ -28,8 +28,11 @@ const getClear = document.querySelector('.clear');
 const getEraser = document.querySelector('.eraser');
 const getColourPicker = document.querySelector('#colorpicker');
 const getSlider = document.querySelector('#slider');
+const getSliderValue = document.querySelector('.grid-value');
 let colour = "black";
 let toggle = false;
+
+getSliderValue.textContent = " 16 by 16"
 
 let sketchListener = (event) => {
     event.target.style.backgroundColor = colour;
@@ -61,6 +64,7 @@ function slider(){
         //to do: fix bug when changing grid, colour is not retained and black is used
         container.replaceChildren()
         makeRows(e.target.value)
+        getSliderValue.textContent = `${e.target.value} by ${e.target.value}`
         blocks = document.querySelectorAll('.block');
         sketch();
         clear();
