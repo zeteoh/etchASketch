@@ -43,11 +43,12 @@ function sketch(){
 
 function slider(){
     getSlider.addEventListener("change", (e) => {
-        //to do: remove prev rows and cols and make a fresh table
+        //to do: fix bug when changing grid, colour is not retained and black is used
         container.replaceChildren()
         makeRows(e.target.value)
         blocks = document.querySelectorAll('.block');
-        sketch()
+        sketch();
+        clear();
     })
 }
 
