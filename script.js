@@ -41,6 +41,9 @@ function sketch(){
 
 let colourPickerListener = (event) => {
     blocks.forEach((block) => {
+        if(toggle){
+            removeEraserListener()
+        }
         block.addEventListener("mouseover", () => {
             block.style.backgroundColor = event.target.value;
         })
