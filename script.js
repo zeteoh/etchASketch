@@ -23,10 +23,12 @@ function makeRows(x){
 
 makeRows(8);
 
-const blocks = document.querySelectorAll('.block');
+let blocks = document.querySelectorAll('.block');
 const getClear = document.querySelector('.clear');
 const getEraser = document.querySelector('.eraser');
 const getColourPicker = document.querySelector('#colorpicker');
+const getSlider = document.querySelector('#slider');
+
 let toggle = false;
 
 let sketchListener = (event) => {
@@ -36,6 +38,16 @@ let sketchListener = (event) => {
 function sketch(){
     blocks.forEach((block) => {
         block.addEventListener("mouseover", sketchListener)
+    })
+}
+
+function slider(){
+    getSlider.addEventListener("change", (e) => {
+        //to do: remove prev rows and cols and make a fresh table
+        container.replaceChildren()
+        makeRows(e.target.value)
+        blocks = document.querySelectorAll('.block');
+        sketch()
     })
 }
 
@@ -93,3 +105,4 @@ function clear(){
 sketch()
 clear()
 colourPicker()
+slider()
