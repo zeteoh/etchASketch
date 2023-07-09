@@ -26,6 +26,7 @@ makeRows(8);
 const blocks = document.querySelectorAll('.block');
 const getClear = document.querySelector('.clear');
 const getEraser = document.querySelector('.eraser');
+const getColourPicker = document.querySelector('#colorpicker');
 let toggle = false;
 
 let sketchListener = (event) => {
@@ -38,10 +39,21 @@ function sketch(){
     })
 }
 
+let colourPickerListener = (event) => {
+    blocks.forEach((block) => {
+        block.addEventListener("mouseover", () => {
+            block.style.backgroundColor = event.target.value;
+        })
+    })
+}
+
+function colourPicker(){
+    getColourPicker.addEventListener("input", colourPickerListener)
+}
+
 let eraserListener = (event) => {
     event.target.style.backgroundColor = "white";
 };
-
 
 function removeEraserListener(){
     toggle = false
@@ -67,8 +79,8 @@ function clear(){
     blocks.forEach((block) => {
         getClear.addEventListener("click", () => {
             block.style.backgroundColor = "white";
+            //if eraser is active, remove listener and toggle it off
             if(toggle){
-                console.log()
                 removeEraserListener()
             }
         })
@@ -77,3 +89,4 @@ function clear(){
 
 sketch()
 clear()
+colourPicker()
