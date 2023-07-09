@@ -21,24 +21,39 @@ function makeRows(x){
     }
 }
 
-makeRows(8);
+makeRows(16);
 
 let blocks = document.querySelectorAll('.block');
 const getClear = document.querySelector('.clear');
 const getEraser = document.querySelector('.eraser');
 const getColourPicker = document.querySelector('#colorpicker');
 const getSlider = document.querySelector('#slider');
-
+let colour = "black";
 let toggle = false;
 
 let sketchListener = (event) => {
-    event.target.style.backgroundColor = "black"
+    event.target.style.backgroundColor = colour;
 }
 
 function sketch(){
     blocks.forEach((block) => {
         block.addEventListener("mouseover", sketchListener)
     })
+}
+
+
+let colourPickerListener = (event) => {
+    blocks.forEach((block) => {
+        if(toggle){
+            removeEraserListener()
+        }
+        colour = event.target.value;
+        sketch();
+    })
+}
+
+function colourPicker(){
+    getColourPicker.addEventListener("input", colourPickerListener)
 }
 
 function slider(){
@@ -49,22 +64,9 @@ function slider(){
         blocks = document.querySelectorAll('.block');
         sketch();
         clear();
+        // //fix the bug below
+        // colourPicker()
     })
-}
-
-let colourPickerListener = (event) => {
-    blocks.forEach((block) => {
-        if(toggle){
-            removeEraserListener()
-        }
-        block.addEventListener("mouseover", () => {
-            block.style.backgroundColor = event.target.value;
-        })
-    })
-}
-
-function colourPicker(){
-    getColourPicker.addEventListener("input", colourPickerListener)
 }
 
 let eraserListener = (event) => {
