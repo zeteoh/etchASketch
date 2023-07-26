@@ -70,7 +70,6 @@ let eraserListener = (event) => {
 
 function removeEraserListener(){
     toggle = false
-    getEraser.style.transitionDelay = "0ms"; // Add this line
     getEraser.classList.remove('eraserActive');
     blocks.forEach((block) => {
         block.removeEventListener("mouseover", eraserListener)
