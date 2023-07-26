@@ -15,23 +15,23 @@
         <!-- holds the settings on left and content on the right -->
         <div class="settings">
             <!-- let this be a slider for user to select the number of grid -->
-            <div class="user-selected-grid">
+            <div class="user-selected-grid initial">
                 <div class="grid-value"></div>
                 <input type="range" min="4" max="60" value="16" id="slider">
             </div>
-            <div class="colour-selection">
+            <div class="colour-selection initial">
                 <input type="color" id="colorpicker" value="#000000">
             </div>
-            <div class="eraser" onclick="eraser()">
+            <div class="eraser initial" onclick="eraser()">
                 <!-- let this be an eraser -->
                 Eraser
             </div>
-            <div class="clear">
+            <div class="clear initial">
                 <!-- let this be a clear button to wipe the grid -->
                 Clear
             </div>
         </div>
-        <div class="content">
+        <div class="content initial">
             <!-- create a 16 by 16 grid here using js -->
         </div>
     </div>

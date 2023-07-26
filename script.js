@@ -70,21 +70,23 @@ let eraserListener = (event) => {
 
 function removeEraserListener(){
     toggle = false
-    getEraser.style.cssText = "box-shadow: 0 0 0 white"
+    getEraser.style.transitionDelay = "0ms"; // Add this line
+    getEraser.classList.remove('eraserActive');
     blocks.forEach((block) => {
         block.removeEventListener("mouseover", eraserListener)
     })
 }
 
+// JavaScript
 function eraser(){
     if(!toggle){
-        getEraser.style.cssText = "box-shadow: 5px 5px 5px black"
-        toggle = true
+        getEraser.classList.add('eraserActive');
+        toggle = true;
         blocks.forEach((block) => {
             block.addEventListener("mouseover", eraserListener)
-        })
-    }else{
-        removeEraserListener()
+        });
+    } else {
+        removeEraserListener();
     }
 }
 
@@ -101,13 +103,21 @@ function clear(){
 }
 
 window.onload = function() {
-    let settingsItems = document.querySelectorAll('.settings > div');
-    container.style.transform = "translateX(0)";
-    container.style.opacity = "1";
-    settingsItems.forEach(item => {
-        item.style.transform = "translateX(20%)";
+    let initialAnimations = document.querySelectorAll('.initial');
+    getEraser.style.transitionDelay = "1000ms";
+
+    initialAnimations.forEach(item => {
+        item.style.transform = "translateX(0)";
         item.style.opacity = "1";
     });
+
+    // Remove transitions after the longest transition is done
+    setTimeout(function() {
+        initialAnimations.forEach(item => {
+            item.classList.remove('initial')
+        });
+        getEraser.style.transitionDelay = "0ms";
+    }, 2000);  // 1s (transition duration) + 1000ms (longest delay)
 }
 
 

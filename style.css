@@ -4,9 +4,7 @@ html, body{
 }
 
 .header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     padding: 50px;
     font-weight: bolder;
     font-size: 70px;
@@ -82,8 +80,8 @@ input[type="color"]{
     font-size: 20px;
     font-weight: bolder;
 }
-
-.content, .settings > div{
+/* CSS */
+.initial{
     transform: translateX(-100%);
     transition: transform 1s ease-in-out;
     opacity: 0;
@@ -101,10 +99,11 @@ input[type="color"]{
     transition-delay: 800ms;
 }
 
-.settings > div:nth-child(3){
-    transition-delay: 1000ms;
-}
-
 .settings > div:nth-child(4){
     transition-delay: 1200ms;
+}
+
+.eraser.eraserActive{
+    box-shadow: 5px 5px 5px black !important;
+    transition: box-shadow 0ms;
 }
