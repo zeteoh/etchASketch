@@ -1,9 +1,3 @@
-// create a new 16 by 16 grid
-// initialise a row 
-// initiliase 16 columns of grid
-// create divs of a box
-// once hit 16 rows, stop
-
 const container = document.querySelector('.content');
 
 function makeRows(x){
@@ -61,15 +55,12 @@ function colourPicker(){
 
 function slider(){
     getSlider.addEventListener("change", (e) => {
-        //to do: fix bug when changing grid, colour is not retained and black is used
         container.replaceChildren()
         makeRows(e.target.value)
         getSliderValue.textContent = `${e.target.value} by ${e.target.value}`
         blocks = document.querySelectorAll('.block');
         sketch();
         clear();
-        // //fix the bug below
-        // colourPicker()
     })
 }
 
@@ -108,6 +99,18 @@ function clear(){
         })
     })
 }
+
+window.onload = function() {
+    let settingsItems = document.querySelectorAll('.settings > div');
+    container.style.transform = "translateX(0)";
+    container.style.opacity = "1";
+    settingsItems.forEach(item => {
+        item.style.transform = "translateX(20%)";
+        item.style.opacity = "1";
+    });
+}
+
+
 
 sketch()
 clear()
