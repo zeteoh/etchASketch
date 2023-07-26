@@ -80,7 +80,14 @@ input[type="color"]{
     font-size: 20px;
     font-weight: bolder;
 }
-/* CSS */
+/* Animations */
+
+.initial-content{
+    transform: scale(0);
+    transition: transform 1s ease-in-out;
+    opacity: 0;
+}
+
 .initial{
     transform: translateX(-100%);
     transition: transform 1s ease-in-out;

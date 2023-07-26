@@ -102,8 +102,12 @@ function clear(){
 }
 
 window.onload = function() {
+    let contentAnimations = document.querySelector('.initial-content');
     let initialAnimations = document.querySelectorAll('.initial');
     getEraser.style.transitionDelay = "1000ms";
+
+    contentAnimations.style.transform = "scale(1)";
+    contentAnimations.style.opacity = "1"
 
     initialAnimations.forEach(item => {
         item.style.transform = "translateX(0)";
@@ -115,6 +119,7 @@ window.onload = function() {
         initialAnimations.forEach(item => {
             item.classList.remove('initial')
         });
+        contentAnimations.remove.classList('initial-content')
         getEraser.style.transitionDelay = "0ms";
     }, 2000);  // 1s (transition duration) + 1000ms (longest delay)
 }
