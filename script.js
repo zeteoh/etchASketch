@@ -106,6 +106,7 @@ window.onload = function() {
     let initialAnimations = document.querySelectorAll('.initial');
     getEraser.style.transitionDelay = "800ms";
 
+    // Transform scale to 1 and opacity to 1
     contentAnimations.style.transform = "scale(1)";
     contentAnimations.style.opacity = "1"
 
